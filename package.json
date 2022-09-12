@@ -11,7 +11,9 @@
   "author": "Johann Kergal",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "sqlite3": "^5.0.11",
+    "typeorm": "^0.3.9"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
