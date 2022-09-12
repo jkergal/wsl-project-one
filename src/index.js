@@ -1,30 +1,28 @@
 const express = require('express')
 const typeorm = require('typeorm')
+const Wilder = require('./models/Wilder')
 
 const app = express()
-const port = 4000
+const PORT = 4000
 
 const dataSource = new typeorm.DataSource({
     type: "sqlite",
     database: './wildersdb.sqlite',
-    synchronize: true
-})
+    synchronize: true,
+    entities: [Wilder],
+});
 
 app.get("/", (req, res) => {
     res.send('Hello world, from Express !')
-})
+});
 
 const start = async () => {
-    try {
-        await dataSource.initialize()   
-    } catch(error) {
-        console.log(error)
-    } finally {
-        console.log('DB initialized')
-    }
+    await dataSource.initialize();
+    await dataSource.getRepository(Wilder).clear();
+    await dataSource.getRepository(Wilder).save({ name: 'Jean Wilder' })
 
-    app.listen(port, () => {
-        console.log(`Server running on port ${port} ✅`)
+    app.listen(PORT, () => {
+        console.log(`Server running on PORT ${PORT} ✅`)
     })
 }
 
