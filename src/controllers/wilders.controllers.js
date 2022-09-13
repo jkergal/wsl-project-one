@@ -1,4 +1,4 @@
-const { getWilders, createWilder } = require('../models/Wilder/manager');
+const { getWilders, createWilder } = require('../models/Wilder/wilder.manager');
 
 const get = async (req, res) => {
 	const wilders = await getWilders();

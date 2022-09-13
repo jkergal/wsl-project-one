@@ -1,7 +1,7 @@
 const express = require('express');
-const wildersControllers = require('./controllers/wilders');
+const wildersControllers = require('./controllers/wilders.controllers');
 const { getDatabase } = require('./database/utils');
-const { initializeWilders } = require('./models/Wilder/manager');
+const { initializeWilders } = require('./models/Wilder/wilder.manager');
 
 const app = express();
 const PORT = 4000;
