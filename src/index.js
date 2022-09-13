@@ -1,4 +1,5 @@
 const express = require('express');
+const router = express.Router();
 const wildersControllers = require('./controllers/wilders.controllers');
 const { getDatabase } = require('./database/utils');
 const { initializeWilders } = require('./models/Wilder/wilder.manager');
@@ -15,6 +16,7 @@ app.get('/', function (req, res) {
 
 app.get(WILDERS_PATH, wildersControllers.get);
 app.post(WILDERS_PATH, wildersControllers.post);
+app.put(`${WILDERS_PATH}/:id`, wildersControllers.put);
 
 async function start() {
 	await initializeWilders();

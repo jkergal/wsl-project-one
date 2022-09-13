@@ -1,4 +1,4 @@
-const { getWilders, createWilder } = require('../models/Wilder/wilder.manager');
+const { getWilders, createWilder, updateWilder } = require('../models/Wilder/wilder.manager');
 
 const get = async (req, res) => {
 	const wilders = await getWilders();
@@ -15,7 +15,26 @@ const post = async (req, res) => {
 	}
 };
 
+const put = async (req, res) => {
+	const { id } = req.params;
+	const { firstName, lastName } = req.body;
+
+	// console.log(id, firstName, lastName);
+
+	if (!id || !firstName || !lastName) {
+		res.status(400).json({ error: 'ID, first name and last name are mandatory.' });
+	} else {
+		try {
+			const updatedWilder = await updateWilder(id, firstName, lastName);
+			res.json(updatedWilder);
+		} catch (error) {
+			res.status(404).json({ error: error.message });
+		}
+	}
+};
+
 module.exports = {
 	get,
-	post
+	post,
+	put
 };
