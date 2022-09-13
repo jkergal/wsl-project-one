@@ -30,9 +30,20 @@ async function updateWilder(id, firstName, lastName) {
 		lastName
 	});
 }
+
+const deleteWilder = async (id) => {
+	const wilderRepository = await getWilderRepository();
+	const existingWilder = await wilderRepository.findOneBy({ id });
+	if (!existingWilder) {
+		throw Error('No existing Wilder matching ID.');
+	}
+	return wilderRepository.remove(existingWilder);
+};
+
 module.exports = {
 	initializeWilders,
 	getWilders,
 	createWilder,
-	updateWilder
+	updateWilder,
+	deleteWilder
 };
