@@ -10,6 +10,7 @@ const dataSource = new typeorm.DataSource({
     database: './wildersdb.sqlite',
     synchronize: true,
     entities: [Wilder],
+    logging: ["query", "error"],
 });
 
 app.get("/", (req, res) => {
