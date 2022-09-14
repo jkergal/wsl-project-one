@@ -1,6 +1,6 @@
-import Wilder from './components/wilder/Wilder';
-import './App.css';
-import WILDERS from './lib/data/wildersData';
+import Wilder from 'components/wilder/Wilder';
+import 'App.css';
+import WILDERS from 'lib/data/wildersData';
 
 function App() {
 	// fetch list of wilders from API

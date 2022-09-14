@@ -1,5 +1,5 @@
-import blankProfilePicture from '../../assets/images/blank-profile-picture.png';
-import Skill from '../skill/Skill';
+import blankProfilePicture from 'assets/images/blank-profile-picture.png';
+import Skill from 'components/skill/Skill';
 
 const Wilder = ({ firstName, lastName, skills }) => {
 	return (
