@@ -1,45 +1,6 @@
 import Wilder from './components/wilder/Wilder';
 import './App.css';
-
-const WILDERS = [
-	{
-		id: 'aaaa',
-		firstName: 'Laurent',
-		lastName: 'Wilder',
-		skills: [
-			{
-				id: 'skill-1',
-				skillName: 'PHP'
-			}
-		]
-	},
-	{
-		id: 'bbbb',
-		firstName: 'Jeanne',
-		lastName: 'Wild',
-		skills: [
-			{
-				id: 'skill-2',
-				skillName: 'JavaScript'
-			}
-		]
-	},
-	{
-		id: 'cccc',
-		firstName: 'Nicolas',
-		lastName: 'W.',
-		skills: [
-			{
-				id: 'skill-1',
-				skillName: 'PHP'
-			},
-			{
-				id: 'skill-2',
-				skillName: 'JavaScript'
-			}
-		]
-	}
-];
+import WILDERS from './lib/data/wildersData';
 
 function App() {
 	// fetch list of wilders from API
