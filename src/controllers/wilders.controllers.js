@@ -24,8 +24,6 @@ const put = async (req, res) => {
 	const { id } = req.params;
 	const { firstName, lastName } = req.body;
 
-	// console.log(id, firstName, lastName);
-
 	if (!firstName || !lastName) {
 		res.status(400).json({ error: 'ID, first name and last name are mandatory.' });
 	} else {
