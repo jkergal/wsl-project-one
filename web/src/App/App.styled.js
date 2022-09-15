@@ -4,13 +4,19 @@ import { Link } from 'react-router-dom';
 import { MAIN_THEME_COLOR } from 'styles/style.constants.js';
 import { baseContainerStyles, baseTitleStyles } from 'styles/base-styles';
 
+export const Layout = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 100vh;
+`;
+
 export const Container = styled.div`
 	${baseContainerStyles}
 `;
 
 export const MainContainer = styled.main`
 	${baseContainerStyles}
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

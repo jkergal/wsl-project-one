@@ -24,7 +24,7 @@ const Home = () => {
 		<>
 			<SectionTitle>Wilders</SectionTitle>
 			<Link to={CREATE_WILDER_PATH}>Ajouter un nouveau Wilder</Link>
-			<MainContent>
+			{/* <MainContent> */}
 				{isLoading ? (
 					<LoadingSpinner />
 				) : wilders.length === 0 ? (
@@ -42,7 +42,7 @@ const Home = () => {
 						))}
 					</CardRow>
 				)}
-			</MainContent>
+			{/* </MainContent> */}
 		</>
 	);
 };

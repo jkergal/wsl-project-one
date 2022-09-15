@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 
 import Home from 'pages/Home/Home';
-import { Container, Footer, Header, MainContainer, PageTitle, PageTitleLink } from 'App/App.styled';
+import { Container, Footer, Header, Layout, MainContainer, PageTitle, PageTitleLink } from 'App/App.styled';
 import CreateWilder from 'pages/CreateWilder/CreateWilder';
 import { CREATE_WILDER_PATH, HOME_PATH } from 'paths';
 
 function App() {
 	return (
-		<>
+		<Layout>
 			<Header>
 				<Container>
 					<PageTitle>
@@ -26,7 +26,7 @@ function App() {
 					<p>&copy; 2022 Wild Code School</p>
 				</Container>
 			</Footer>
-		</>
+		</Layout>
 	);
 }
 
