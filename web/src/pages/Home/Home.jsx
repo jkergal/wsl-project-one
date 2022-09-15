@@ -1,6 +1,6 @@
 import { SectionTitle, CardRow, MainContent } from 'pages/Home/Home.styled';
 import Wilder from 'components/Wilder/Wilder';
-import Loader from 'components/Loader/Loader';
+import { LoadingSpinner } from 'components/Loader/Loader.styled';
 import { useEffect, useState } from 'react';
 
 const Home = () => {
@@ -21,7 +21,7 @@ const Home = () => {
 			<SectionTitle>Wilders</SectionTitle>
 			<MainContent>
 				{isLoading ? (
-					<Loader />
+					<LoadingSpinner />
 				) : (
 					<CardRow>
 						{wilders?.map((wilder) => (
