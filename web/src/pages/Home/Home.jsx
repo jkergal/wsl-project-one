@@ -22,6 +22,8 @@ const Home = () => {
 			<MainContent>
 				{isLoading ? (
 					<LoadingSpinner />
+				) : wilders.length === 0 ? (
+					"Il n'y a pas encore de Wilders ! Rejoint-nous 😎"
 				) : (
 					<CardRow>
 						{wilders?.map((wilder) => (
