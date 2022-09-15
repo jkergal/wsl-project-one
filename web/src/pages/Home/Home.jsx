@@ -13,6 +13,7 @@ const Home = () => {
             firstName={wilder.firstName}
             lastName={wilder.lastName}
             skills={wilder.skills}
+            isTrainer={wilder.isTrainer}
           />
         ))}
       </CardRow>

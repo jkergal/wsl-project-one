@@ -4,11 +4,32 @@ import { MAIN_THEME_COLOR } from 'styles/style.constants';
 import { baseTitleStyles, Paragraph } from 'styles/base-styles';
 
 export const Card = styled.article`
-	width: 200px;
-	padding: 20px;
-	border: 1px solid #c9c9c9;
-	border-radius: 7px;
+	width: 250px;
+	border: 1px solid ${(props) => (props.isTrainer ? `${MAIN_THEME_COLOR}` : '#c9c9c9')};
+	border-radius: 8px;
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+	overflow: hidden;
+`;
+
+export const CardInfosContainer = styled.article`
+	padding: 0px 20px 20px 20px;
+`;
+
+export const CardWilderRoleWrapper = styled.div`
+	height: 28px;
+	display: flex;
+	justify-content: flex-end;
+`;
+
+export const CardWilderRole = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: ${MAIN_THEME_COLOR};
+	/* border-radius: 5px; */
+	border-radius: 0 0 0 8px;
+	width: 100px;
+	color: white;
 `;
 
 export const CardImage = styled.img`

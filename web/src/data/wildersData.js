@@ -3,6 +3,7 @@ const WILDERS = [
 		id: 'aaaa',
 		firstName: 'Laurent',
 		lastName: 'Wilder',
+		isTrainer: false,
 		skills: [
 			{
 				id: 'skill-1',
@@ -21,7 +22,7 @@ const WILDERS = [
 				skillName: 'SQL'
 			},
 			{
-				id: 'skill-4',
+				id: 'skill-5',
 				skillName: 'HTML'
 			}
 		]
@@ -30,6 +31,7 @@ const WILDERS = [
 		id: 'bbbb',
 		firstName: 'Jeanne',
 		lastName: 'Wild',
+		isTrainer: false,
 		skills: [
 			{
 				id: 'skill-2',
@@ -38,9 +40,22 @@ const WILDERS = [
 		]
 	},
 	{
+		id: 'dddd',
+		firstName: 'Arnaud',
+		lastName: 'Renaud',
+		isTrainer: true,
+		skills: [
+			{
+				id: 'skill-x',
+				skillName: 'Omniscience Absolue'
+			}
+		]
+	},
+	{
 		id: 'cccc',
 		firstName: 'Nicolas',
 		lastName: 'W.',
+		isTrainer: false,
 		skills: [
 			{
 				id: 'skill-1',
