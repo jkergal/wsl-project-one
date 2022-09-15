@@ -13,6 +13,9 @@ module.exports = new EntitySchema({
 		},
 		lastName: {
 			type: 'text'
+		},
+		isTrainer: {
+			type: 'boolean'
 		}
 	},
 	relations: {

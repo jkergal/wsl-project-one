@@ -8,12 +8,20 @@ async function initializeWilders() {
 	await wilderRepository.save({
 		firstName: 'Jean',
 		lastName: 'Wilder',
-		school: lyonSchool
+		school: lyonSchool,
+		isTrainer: false
 	});
 	await wilderRepository.save({
 		firstName: 'Jeanne',
 		lastName: 'Wilder',
-		school: lyonSchool
+		school: lyonSchool,
+		isTrainer: false
+	});
+	await wilderRepository.save({
+		firstName: 'Arnaud',
+		lastName: 'Renaud',
+		school: lyonSchool,
+		isTrainer: true
 	});
 }
 

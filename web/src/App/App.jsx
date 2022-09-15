@@ -2,8 +2,6 @@ import Home from 'pages/Home/Home';
 import { Container, Footer, Header, MainContainer, PageTitle } from 'App/App.styled';
 
 function App() {
-	// fetch list of wilders from API
-
 	return (
 		<>
 			<Header>
