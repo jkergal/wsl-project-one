@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
-import { CardRow, MainContent } from "pages/Home/Home.styled";
+import { CardRow } from "pages/Home/Home.styled";
 import Wilder from "components/Wilder/Wilder";
 import { LoadingSpinner } from 'components/Loader/Loader.styled';
 import { SectionTitle } from "styles/base-styles";
@@ -24,7 +24,6 @@ const Home = () => {
 		<>
 			<SectionTitle>Wilders</SectionTitle>
 			<Link to={CREATE_WILDER_PATH}>Ajouter un nouveau Wilder</Link>
-			{/* <MainContent> */}
 				{isLoading ? (
 					<LoadingSpinner />
 				) : wilders.length === 0 ? (
@@ -42,7 +41,6 @@ const Home = () => {
 						))}
 					</CardRow>
 				)}
-			{/* </MainContent> */}
 		</>
 	);
 };
