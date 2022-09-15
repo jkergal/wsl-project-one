@@ -23,14 +23,3 @@ export const PageTitle = styled.h1`
 	${baseTitleStyles}
 	font-size: 40px;
 `;
-
-export const SectionTitle = styled.h2`
-	${baseTitleStyles}
-	font-size: 28px;
-`;
-
-export const CardRow = styled.section`
-	display: grid;
-	grid-template-columns: repeat(3, 32%);
-	justify-content: space-between;
-`;
