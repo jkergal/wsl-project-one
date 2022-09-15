@@ -1,10 +1,4 @@
 import styled from 'styled-components';
-import { baseTitleStyles } from 'styles/base-styles';
-
-export const SectionTitle = styled.h2`
-	${baseTitleStyles}
-	font-size: 28px;
-`;
 
 export const MainContent = styled.main`
 	display: flex;
