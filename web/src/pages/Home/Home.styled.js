@@ -6,6 +6,13 @@ export const SectionTitle = styled.h2`
 	font-size: 28px;
 `;
 
+export const MainContent = styled.main`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* height: 100%; */
+`;
+
 export const CardRow = styled.section`
 	display: flex;
 	flex-wrap: wrap;

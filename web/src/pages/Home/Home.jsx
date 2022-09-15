@@ -1,6 +1,6 @@
-import { SectionTitle, CardRow } from 'pages/Home/Home.styled';
+import { SectionTitle, CardRow, MainContent } from 'pages/Home/Home.styled';
 import Wilder from 'components/Wilder/Wilder';
-// import WILDERS_BRUTE_DATA from 'data/wildersData';
+import Loader from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
 
 const Home = () => {
@@ -19,21 +19,23 @@ const Home = () => {
 	return (
 		<>
 			<SectionTitle>Wilders</SectionTitle>
-      {isLoading ? (
-        "Loading…"
-      ) : (
-        <CardRow>
-          {wilders?.map((wilder) => (
-            <Wilder
-              key={wilder.id}
-              firstName={wilder.firstName}
-              lastName={wilder.lastName}
-              skills={wilder.skills}
-			  isTrainer={wilder.isTrainer}
-            />
-          ))}
-        </CardRow>
-      )}
+			<MainContent>
+				{isLoading ? (
+					<Loader />
+				) : (
+					<CardRow>
+						{wilders?.map((wilder) => (
+							<Wilder
+								key={wilder.id}
+								firstName={wilder.firstName}
+								lastName={wilder.lastName}
+								skills={wilder.skills}
+								isTrainer={wilder.isTrainer}
+							/>
+						))}
+					</CardRow>
+				)}
+			</MainContent>
 		</>
 	);
 };

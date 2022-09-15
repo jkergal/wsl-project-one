@@ -7,6 +7,7 @@ export const baseTitleStyles = css`
 
 export const baseContainerStyles = css`
 	max-width: ${APP_FUNCTIONAL_WIDTH};
+
 	margin-left: auto;
 	margin-right: auto;
 	padding: 24px;
