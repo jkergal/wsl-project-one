@@ -12,7 +12,7 @@ import {
 	CardTitle
 } from 'components/Wilder/Wilder.styled';
 
-const Wilder = ({ firstName, lastName, skills, isTrainer }) => {
+const Wilder = ({ firstName, lastName, skills, isTrainer, school }) => {
 	return (
 		<Card isTrainer={isTrainer}>
 			<CardWilderRoleWrapper>
@@ -27,6 +27,7 @@ const Wilder = ({ firstName, lastName, skills, isTrainer }) => {
 				<CardTitle>
 					{firstName} {lastName}
 				</CardTitle>
+					<h4>{school}</h4>
 				<CardParagraph>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
 				</CardParagraph>

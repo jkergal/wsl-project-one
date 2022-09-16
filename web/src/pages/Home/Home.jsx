@@ -43,7 +43,9 @@ const Home = () => {
 						key={wilder.id}
 						firstName={wilder.firstName}
 						lastName={wilder.lastName}
+						isTrainer={wilder.isTrainer}
 						skills={wilder.skills}
+						school={wilder.school.schoolName}
 					/>
 				))}
 			</CardRow>

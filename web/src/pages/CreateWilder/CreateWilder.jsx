@@ -8,20 +8,30 @@ import { createWilder } from './rest';
 const CreateWilder = () => {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
-  const [isTrainer, setIsTrainer] = useState(false);
+	const [isTrainer, setIsTrainer] = useState(false);
+	const [schoolName, setSchool] = useState('');
 
 	const submit = async () => {
 		try {
-			await createWilder(firstName, lastName, isTrainer);
+			await createWilder(firstName, lastName, isTrainer, schoolName);
 			toast.success(`Wilder ${firstName} ${lastName} créé avec succès.`);
 			setFirstName('');
 			setLastName('');
-      setIsTrainer(false)
+			setIsTrainer(false);
 		} catch (error) {
 			console.log('error caught ????');
 			toast.error(error.message);
 		}
 	};
+
+	const schoolOptions = [
+		{ value: '', text: 'Choose a school' },
+		{ value: 'Lyon', text: 'Lyon' },
+		{ value: 'Nantes', text: 'Nantes' },
+		{ value: 'Paris', text: 'Paris' },
+		{ value: 'Bordeaux', text: 'Bordeaux' },
+		{ value: 'Toulouse', text: 'Toulouse' }
+	];
 
 	return (
 		<>
@@ -61,13 +71,35 @@ const CreateWilder = () => {
 					/>
 				</label>
 				<br />
-        <br />
-				<label>          
-					<input type="checkbox" id="isTrainer" name="isTrainer" onChange={e => setIsTrainer(e.target.checked)} checked={isTrainer} />
+				<br />
+				<label>
+					School
+					<br />
+					<select value={schoolName} onChange={(event) => {
+							setSchool(event.target.value);
+							console.log(event.target.value)
+						}}>
+						{schoolOptions.map((option) => (
+							<option key={option.value} value={option.value}>
+								{option.text}
+							</option>
+						))}
+					</select>
 				</label>
-        Ce wilder est formateur
-        <br/>
-        <br />
+				<br />
+				<br />
+				<label>
+					<input
+						type="checkbox"
+						id="isTrainer"
+						name="isTrainer"
+						onChange={(e) => {setIsTrainer(e.target.checked)}}
+						checked={isTrainer}
+					/>
+				</label>
+				Ce wilder est formateur
+				<br />
+				<br />
 				<button>Valider</button>
 			</form>
 			<ToastContainer />
