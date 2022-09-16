@@ -37,9 +37,9 @@ async function getWilders() {
 	return wilderRepository.find();
 }
 
-async function createWilder(firstName, lastName) {
+async function createWilder(firstName, lastName, isTrainer) {
 	const wilderRepository = await getWilderRepository();
-	const newWilder = wilderRepository.create({ firstName, lastName });
+	const newWilder = wilderRepository.create({ firstName, lastName, isTrainer });
 	await wilderRepository.save(newWilder);
 	return newWilder;
 }
