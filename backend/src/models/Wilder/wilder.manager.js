@@ -1,8 +1,4 @@
-const {
-	getWilderRepository,
-	getSkillRepository,
-	getSchoolRepository
-} = require('../../database/utils');
+const { getWilderRepository, getSkillRepository } = require('../../database/utils');
 const { getSchoolByName } = require('../School/school.manager');
 const { getSkillByName } = require('../Skill/skill.manager');
 
@@ -62,14 +58,15 @@ async function getWilders() {
 	return wilderRepository.find();
 }
 
-async function createWilder(firstName, lastName, isTrainer) {
+async function createWilder(firstName, lastName, isTrainer, schoolName) {
 	const wilderRepository = await getWilderRepository();
-	const newWilder = wilderRepository.create({ firstName, lastName, isTrainer });
+	const school = await getSchoolByName(schoolName);
+	const newWilder = wilderRepository.create({ firstName, lastName, isTrainer, school });
 	await wilderRepository.save(newWilder);
 	return newWilder;
 }
 
-async function updateWilder(id, firstName, lastName) {
+async function updateWilder(id, firstName, lastName, schoolName) {
 	const wilderRepository = await getWilderRepository();
 	const existingWilder = await wilderRepository.findOneBy({ id });
 	if (!existingWilder) {
