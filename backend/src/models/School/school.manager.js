@@ -9,7 +9,16 @@ async function initializeSchools() {
 		schoolName: 'Lyon'
 	});
 	await schoolRepository.save({
-		schoolName: 'Brest'
+		schoolName: 'Nantes'
+	});
+	await schoolRepository.save({
+		schoolName: 'Paris'
+	});
+	await schoolRepository.save({
+		schoolName: 'Bordeaux'
+	});
+	await schoolRepository.save({
+		schoolName: 'Toulouse'
 	});
 }
 

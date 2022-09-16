@@ -1,14 +1,25 @@
-const { getWilderRepository, getSkillRepository } = require('../../database/utils');
+const {
+	getWilderRepository,
+	getSkillRepository,
+	getSchoolRepository
+} = require('../../database/utils');
 const { getSchoolByName } = require('../School/school.manager');
 const { getSkillByName } = require('../Skill/skill.manager');
 
 async function initializeWilders() {
 	const wilderRepository = await getWilderRepository();
 	await wilderRepository.clear();
+
 	const lyonSchool = await getSchoolByName('Lyon');
+	const nantesSchool = await getSchoolByName('Nantes');
+	const parisSchool = await getSchoolByName('Paris');
+	const bordeauxSchool = await getSchoolByName('Bordeaux');
+	const toulouseSchool = await getSchoolByName('Toulouse');
+
 	const PHP = await getSkillByName('PHP');
 	const javascript = await getSkillByName('JavaScript');
 	const python = await getSkillByName('Python');
+
 	await wilderRepository.save({
 		firstName: 'Jean',
 		lastName: 'Wilder',
@@ -19,16 +30,30 @@ async function initializeWilders() {
 	await wilderRepository.save({
 		firstName: 'Jeanne',
 		lastName: 'Wilder',
-		school: lyonSchool,
+		school: bordeauxSchool,
 		skills: [PHP, javascript, python],
 		isTrainer: false
 	});
 	await wilderRepository.save({
 		firstName: 'Arnaud',
 		lastName: 'Renaud',
-		school: lyonSchool,
+		school: parisSchool,
 		skills: [PHP, javascript, python],
 		isTrainer: true
+	});
+	await wilderRepository.save({
+		firstName: 'Jojan',
+		lastName: 'Leterrible',
+		school: nantesSchool,
+		skills: [PHP, javascript, python],
+		isTrainer: false
+	});
+	await wilderRepository.save({
+		firstName: 'Chuck',
+		lastName: 'Norris',
+		school: toulouseSchool,
+		skills: [PHP, javascript, python],
+		isTrainer: false
 	});
 }
 
