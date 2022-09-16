@@ -14,6 +14,15 @@ const initializeSkills = async () => {
 	await skillRepository.save({
 		skillName: 'Python'
 	});
+	await skillRepository.save({
+		skillName: 'CSS'
+	});
+	await skillRepository.save({
+		skillName: 'HTML'
+	});
+	await skillRepository.save({
+		skillName: 'SQL'
+	});
 };
 
 async function getSkillByName(name) {

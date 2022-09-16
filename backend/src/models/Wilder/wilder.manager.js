@@ -15,6 +15,9 @@ async function initializeWilders() {
 	const PHP = await getSkillByName('PHP');
 	const javascript = await getSkillByName('JavaScript');
 	const python = await getSkillByName('Python');
+	const CSS = await getSkillByName('CSS');
+	const HTML = await getSkillByName('HTML');
+	const SQL = await getSkillByName('SQL');
 
 	await wilderRepository.save({
 		firstName: 'Jean',
@@ -58,10 +61,18 @@ async function getWilders() {
 	return wilderRepository.find();
 }
 
-async function createWilder(firstName, lastName, isTrainer, schoolName) {
+async function createWilder(firstName, lastName, isTrainer, schoolName, skillsName) {
 	const wilderRepository = await getWilderRepository();
 	const school = await getSchoolByName(schoolName);
-	const newWilder = wilderRepository.create({ firstName, lastName, isTrainer, school });
+	const getSkills = async () => {
+		let result = [];
+		for (skillName of skillsName) {
+			result.push(await getSkillByName(skillName));
+		}
+		return result;
+	};
+	const skills = await getSkills();
+	const newWilder = wilderRepository.create({ firstName, lastName, isTrainer, school, skills });
 	await wilderRepository.save(newWilder);
 	return newWilder;
 }

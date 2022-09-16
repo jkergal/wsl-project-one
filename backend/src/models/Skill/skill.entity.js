@@ -11,6 +11,7 @@ module.exports = new EntitySchema({
 		skillName: {
 			type: 'text',
 			unique: true
+			// nullable: true
 		}
 	}
 });
