@@ -2,6 +2,7 @@ export const WILDERS_PATH = '/wilders';
 
 export async function query(url, method, body) {
 	let httpStatusError = false;
+	console.log(JSON.stringify(body));
 	try {
 		const response = await fetch(url, {
 			method,

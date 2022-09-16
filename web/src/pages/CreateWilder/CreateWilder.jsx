@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Select from 'react-select'
 
 import { SectionTitle } from '../../styles/base-styles';
 import { createWilder } from './rest';
@@ -10,14 +11,18 @@ const CreateWilder = () => {
 	const [lastName, setLastName] = useState('');
 	const [isTrainer, setIsTrainer] = useState(false);
 	const [schoolName, setSchool] = useState('');
+	const [skills, setSkills] = useState();
 
 	const submit = async () => {
 		try {
-			await createWilder(firstName, lastName, isTrainer, schoolName);
+			console.log(skills)
+			await createWilder(firstName, lastName, isTrainer, schoolName, skills);
 			toast.success(`Wilder ${firstName} ${lastName} créé avec succès.`);
 			setFirstName('');
 			setLastName('');
 			setIsTrainer(false);
+			setSkills();
+			// console.log(skills)
 		} catch (error) {
 			console.log('error caught ????');
 			toast.error(error.message);
@@ -32,6 +37,21 @@ const CreateWilder = () => {
 		{ value: 'Bordeaux', text: 'Bordeaux' },
 		{ value: 'Toulouse', text: 'Toulouse' }
 	];
+
+	const skillsOptions = [
+		{ value: 'PHP', label: 'PHP' },
+		{ value: 'JavaScript', label: 'JavaScript' },
+		{ value: 'Python', label: 'Python' },
+		{ value: 'CSS', label: 'CSS' },
+		{ value: 'HTML', label: 'HTML' },
+		{ value: 'SQL', label: 'SQL' },
+	];
+
+	const handleChangeSkills = (data) => {
+		let selectedSkills = data.map(skill => skill.value)
+		console.log(selectedSkills)
+		setSkills(selectedSkills)
+	}
 
 	return (
 		<>
@@ -88,12 +108,15 @@ const CreateWilder = () => {
 				</label>
 				<br />
 				<br />
+				<Select options={skillsOptions} isMulti="true" onChange={(data) => handleChangeSkills(data)}/>
+				<br />
+				<br />
 				<label>
 					<input
 						type="checkbox"
 						id="isTrainer"
 						name="isTrainer"
-						onChange={(e) => {setIsTrainer(e.target.checked)}}
+						onChange={(e) => setIsTrainer(e.target.checked)}
 						checked={isTrainer}
 					/>
 				</label>
