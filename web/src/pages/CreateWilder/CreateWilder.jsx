@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Select from 'react-select'
+import Select from 'react-select';
 
 import { SectionTitle } from '../../styles/base-styles';
 import { createWilder } from './rest';
@@ -12,30 +12,32 @@ const CreateWilder = () => {
 	const [isTrainer, setIsTrainer] = useState(false);
 	const [schoolName, setSchool] = useState('');
 	const [skills, setSkills] = useState([]);
-	const [skillsInputValue, setSkillsInputValue] = useState(null)
+	const [skillsInputValue, setSkillsInputValue] = useState(null);
+	const [schoolInputValue, setSchoolInputValue] = useState(null);
 
 	const submit = async () => {
 		try {
-			console.log(skills)
+			console.log(skills);
 			await createWilder(firstName, lastName, isTrainer, schoolName, skills);
 			toast.success(`Wilder ${firstName} ${lastName} créé avec succès.`);
 			setFirstName('');
 			setLastName('');
 			setIsTrainer(false);
-			setSchool('')
-			setSkillsInputValue(null)
+			setSchool('');
+			setSkillsInputValue(null);
+			setSchoolInputValue(null);
 		} catch (error) {
 			toast.error(error.message);
 		}
 	};
 
 	const schoolOptions = [
-		{ value: '', text: 'Choose a school' },
-		{ value: 'Lyon', text: 'Lyon' },
-		{ value: 'Nantes', text: 'Nantes' },
-		{ value: 'Paris', text: 'Paris' },
-		{ value: 'Bordeaux', text: 'Bordeaux' },
-		{ value: 'Toulouse', text: 'Toulouse' }
+		// { value: '', label: 'Choose a school' },
+		{ value: 'Lyon', label: 'Lyon' },
+		{ value: 'Nantes', label: 'Nantes' },
+		{ value: 'Paris', label: 'Paris' },
+		{ value: 'Bordeaux', label: 'Bordeaux' },
+		{ value: 'Toulouse', label: 'Toulouse' }
 	];
 
 	const skillsOptions = [
@@ -44,15 +46,22 @@ const CreateWilder = () => {
 		{ value: 'Python', label: 'Python' },
 		{ value: 'CSS', label: 'CSS' },
 		{ value: 'HTML', label: 'HTML' },
-		{ value: 'SQL', label: 'SQL' },
+		{ value: 'SQL', label: 'SQL' }
 	];
 
-	const handleChangeSkills = (data) => { 
-		setSkillsInputValue(data)
+	const handleChangeSkills = (data) => {
+		setSkillsInputValue(data);
 
-		let skills = data.map(skill => skill.value)
-		setSkills(skills)
-	}
+		let skills = data.map((skill) => skill.value);
+		setSkills(skills);
+	};
+
+	const handleChangeSchool = (data) => {
+		setSchoolInputValue(data);
+
+		let schoolName = data.value;
+		setSchool(schoolName);
+	};
 
 	return (
 		<>
@@ -96,20 +105,34 @@ const CreateWilder = () => {
 				<label>
 					School
 					<br />
-					<select value={schoolName} onChange={(event) => {
+					<Select
+						options={schoolOptions}
+						value={schoolInputValue}
+						onChange={(data) => handleChangeSchool(data)}
+					/>
+					{/* <select
+						value={schoolName}
+						onChange={(event) => {
 							setSchool(event.target.value);
-						}}>
+						}}
+					>
 						{schoolOptions.map((option) => (
 							<option key={option.value} value={option.value}>
 								{option.text}
 							</option>
 						))}
-					</select>
+					</select> */}
 				</label>
 				<br />
-				<br />
-				<Select options={skillsOptions} value={skillsInputValue} isMulti="true" onChange={(data) => handleChangeSkills(data)}/>
-				<br />
+				<label>
+					Skills
+					<Select
+						options={skillsOptions}
+						value={skillsInputValue}
+						isMulti="true"
+						onChange={(data) => handleChangeSkills(data)}
+					/>
+				</label>
 				<br />
 				<label>
 					<input
