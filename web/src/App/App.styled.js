@@ -24,7 +24,8 @@ export const MainContainer = styled.main`
 `;
 
 export const Header = styled.header`
-	background-color: ${MAIN_THEME_COLOR};
+	background: rgb(247, 108, 108);
+	background: linear-gradient(90deg, rgba(247, 108, 108, 1) 0%, rgba(255, 222, 183, 1) 100%);
 	color: #fff;
 `;
 

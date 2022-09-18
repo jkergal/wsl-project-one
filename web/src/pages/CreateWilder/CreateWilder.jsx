@@ -112,16 +112,6 @@ const CreateWilder = () => {
 							setLastName(event.target.value);
 						}}
 					/>
-					{/* <input
-						type="text"
-						required
-						id="firstName"
-						name="lastName"
-						value={lastName}
-						onChange={(event) => {
-							setLastName(event.target.value);
-						}}
-					/> */}
 				</label>
 				<br />
 				<br />
@@ -134,18 +124,6 @@ const CreateWilder = () => {
 						value={schoolInputValue}
 						onChange={(data) => handleChangeSchool(data)}
 					/>
-					{/* <select
-						value={schoolName}
-						onChange={(event) => {
-							setSchool(event.target.value);
-						}}
-					>
-						{schoolOptions.map((option) => (
-							<option key={option.value} value={option.value}>
-								{option.text}
-							</option>
-						))}
-					</select> */}
 				</label>
 				<br />
 				<label>
