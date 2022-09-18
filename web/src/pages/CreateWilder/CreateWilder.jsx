@@ -49,6 +49,13 @@ const CreateWilder = () => {
 		{ value: 'SQL', label: 'SQL' }
 	];
 
+	const customStyles = {
+		control: (base, state) => ({
+			...base,
+			width: "250px",
+		})
+	};
+
 	const handleChangeSkills = (data) => {
 		setSkillsInputValue(data);
 
@@ -127,6 +134,7 @@ const CreateWilder = () => {
 				<label>
 					Skills
 					<Select
+						styles={customStyles}
 						options={skillsOptions}
 						value={skillsInputValue}
 						isMulti="true"
