@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { CardRow } from 'pages/Home/Home.styled';
-import Wilder from 'components/Wilder/Wilder';
+import Wilder from 'components/Widler/Wilder';
 import { LoadingSpinner } from 'components/Loader/Loader.styled';
 import { SectionTitle } from 'styles/base-styles';
 import { CREATE_WILDER_PATH } from 'paths';

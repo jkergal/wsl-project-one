@@ -10,7 +10,7 @@ import {
 	CardSecondaryTitle,
 	CardSkillList,
 	CardTitle
-} from 'components/Wilder/Wilder.styled';
+} from 'components/Widler/Wilder.styled';
 
 const Wilder = ({ firstName, lastName, skills, isTrainer, school }) => {
 	return (
