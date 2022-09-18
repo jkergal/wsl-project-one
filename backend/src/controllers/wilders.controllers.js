@@ -12,17 +12,18 @@ const get = async (req, res) => {
 };
 
 const post = async (req, res) => {
-	const { firstName, lastName, isTrainer, schoolName, skillsName } = req.body;
-	if (!firstName || !lastName || !lastName || !skillsName || isTrainer === null) {
+	const { firstName, lastName, isTrainer, schoolName, skillsNames } = req.body;
+	if (!firstName || !lastName || !lastName || !skillsNames || isTrainer === null) {
+		console.error(req.body);
 		res.status(400).json({ error: 'First name and last name are mandatory.' });
 	} else {
-		console.log({ skillsName: skillsName });
+		console.log({ skillsNames: skillsNames });
 		const newWilder = await createWilder(
 			firstName,
 			lastName,
 			isTrainer,
 			schoolName,
-			skillsName
+			skillsNames
 		);
 		res.status(201).json(newWilder);
 	}

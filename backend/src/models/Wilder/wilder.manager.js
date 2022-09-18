@@ -61,12 +61,12 @@ async function getWilders() {
 	return wilderRepository.find();
 }
 
-async function createWilder(firstName, lastName, isTrainer, schoolName, skillsName) {
+async function createWilder(firstName, lastName, isTrainer, schoolName, skillsNames) {
 	const wilderRepository = await getWilderRepository();
 	const school = await getSchoolByName(schoolName);
 	const getSkills = async () => {
 		let result = [];
-		for (skillName of skillsName) {
+		for (skillName of skillsNames) {
 			result.push(await getSkillByName(skillName));
 		}
 		return result;
