@@ -11,7 +11,8 @@ const CreateWilder = () => {
 	const [lastName, setLastName] = useState('');
 	const [isTrainer, setIsTrainer] = useState(false);
 	const [schoolName, setSchool] = useState('');
-	const [skills, setSkills] = useState();
+	const [skills, setSkills] = useState([]);
+	const [skillsInputValue, setSkillsInputValue] = useState(null)
 
 	const submit = async () => {
 		try {
@@ -21,10 +22,9 @@ const CreateWilder = () => {
 			setFirstName('');
 			setLastName('');
 			setIsTrainer(false);
-			setSkills();
-			// console.log(skills)
+			setSchool('')
+			setSkillsInputValue(null)
 		} catch (error) {
-			console.log('error caught ????');
 			toast.error(error.message);
 		}
 	};
@@ -47,10 +47,11 @@ const CreateWilder = () => {
 		{ value: 'SQL', label: 'SQL' },
 	];
 
-	const handleChangeSkills = (data) => {
-		let selectedSkills = data.map(skill => skill.value)
-		console.log(selectedSkills)
-		setSkills(selectedSkills)
+	const handleChangeSkills = (data) => { 
+		setSkillsInputValue(data)
+
+		let skills = data.map(skill => skill.value)
+		setSkills(skills)
 	}
 
 	return (
@@ -97,7 +98,6 @@ const CreateWilder = () => {
 					<br />
 					<select value={schoolName} onChange={(event) => {
 							setSchool(event.target.value);
-							console.log(event.target.value)
 						}}>
 						{schoolOptions.map((option) => (
 							<option key={option.value} value={option.value}>
@@ -108,7 +108,7 @@ const CreateWilder = () => {
 				</label>
 				<br />
 				<br />
-				<Select options={skillsOptions} isMulti="true" onChange={(data) => handleChangeSkills(data)}/>
+				<Select options={skillsOptions} value={skillsInputValue} isMulti="true" onChange={(data) => handleChangeSkills(data)}/>
 				<br />
 				<br />
 				<label>
