@@ -5,6 +5,8 @@ import Select from 'react-select';
 
 import { SectionTitle } from '../../styles/base-styles';
 import { createWilder } from './rest';
+import Input from 'components/Input/Input';
+import { MAIN_THEME_COLOR } from 'styles/style.constants';
 
 const CreateWilder = () => {
 	const [firstName, setFirstName] = useState('');
@@ -52,7 +54,13 @@ const CreateWilder = () => {
 	const customStyles = {
 		control: (base, state) => ({
 			...base,
-			width: "250px",
+			width: '268px',
+			borderColor: state.isFocused ? `${MAIN_THEME_COLOR}` : "hsl(0, 0%, 80%)",
+			'&:hover': {
+				borderColor: state.isFocused ? `${MAIN_THEME_COLOR}` : "hsl(0, 0%, 80%)",
+			},
+			boxShadow: state.isFocused ? `0px 0px 3px ${MAIN_THEME_COLOR}` : ''
+			// borderColor: ${MAIN_THEME_COLOR}
 		})
 	};
 
@@ -82,10 +90,9 @@ const CreateWilder = () => {
 				<label>
 					Prénom
 					<br />
-					<input
-						type="text"
-						id="firstName"
-						name="firstName"
+					<Input
+						placeholder="Select..."
+						inputType="text"
 						value={firstName}
 						onChange={(event) => {
 							setFirstName(event.target.value);
@@ -93,10 +100,19 @@ const CreateWilder = () => {
 					/>
 				</label>
 				<br />
+				<br />
 				<label>
 					Nom
 					<br />
-					<input
+					<Input
+						placeholder="Wilder"
+						inputType="text"
+						value={lastName}
+						onChange={(event) => {
+							setLastName(event.target.value);
+						}}
+					/>
+					{/* <input
 						type="text"
 						required
 						id="firstName"
@@ -105,7 +121,7 @@ const CreateWilder = () => {
 						onChange={(event) => {
 							setLastName(event.target.value);
 						}}
-					/>
+					/> */}
 				</label>
 				<br />
 				<br />
@@ -113,6 +129,7 @@ const CreateWilder = () => {
 					School
 					<br />
 					<Select
+						styles={customStyles}
 						options={schoolOptions}
 						value={schoolInputValue}
 						onChange={(data) => handleChangeSchool(data)}
