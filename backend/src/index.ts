@@ -1,9 +1,9 @@
 import express from 'express';
 import * as wildersControllers from './controllers/wilders.controllers';
 import * as schoolsControllers from './controllers/schools.controller';
-import School from './models/School/school.entity';
-import Skill from './models/Skill/skill.entity';
-import Wilder from './models/Wilder/wilder.entity';
+import SchoolRepository from './models/School/school.repository';
+import SkillRepository from './models/Skill/skill.repository';
+import WilderRepository from './models/Wilder/wilder.repository';
 
 const app = express();
 const PORT = 4000;
@@ -31,13 +31,13 @@ app.post(SCHOOLS_PATH, schoolsControllers.post);
 app.delete(`${SCHOOLS_PATH}/:id`, schoolsControllers.del);
 
 async function start() {
-	await Skill.initializeRepository();
-	await School.initializeRepository();
-	await Wilder.initializeRepository();
+	await SkillRepository.initializeRepository();
+	await SchoolRepository.initializeRepository();
+	await WilderRepository.initializeRepository();
 
-	await Skill.initializeSkills();
-	await School.initializeSchools();
-	await Wilder.initializeWilders();
+	await SkillRepository.initializeSkills();
+	await SchoolRepository.initializeSchools();
+	await WilderRepository.initializeWilders();
 	app.listen(PORT, () => {
 		console.log(`Server running on port ${PORT} 👍`);
 	});
