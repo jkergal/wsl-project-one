@@ -28,4 +28,9 @@ async function getSchoolByName(name: string): Promise<School | null> {
 	return schoolRepository.findOneBy({ schoolName: name });
 }
 
-export { initializeSchools, getSchoolByName };
+async function getSchools(): Promise<School[] | null> {
+	const schoolRepository = await getSchoolRepository();
+	return schoolRepository.find();
+}
+
+export { initializeSchools, getSchoolByName, getSchools };
