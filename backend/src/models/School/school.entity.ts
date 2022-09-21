@@ -3,6 +3,10 @@ import Wilder from '../Wilder/wilder.entity';
 
 @Entity()
 export default class School {
+	constructor(schoolName: string) {
+		this.schoolName = schoolName;
+	}
+
 	@PrimaryGeneratedColumn('uuid')
 	id: string;
 

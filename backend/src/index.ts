@@ -28,6 +28,7 @@ app.post(`${WILDERS_PATH}/:id/skills`, wildersControllers.addSkill);
 // Schools Routes
 
 app.get(SCHOOLS_PATH, schoolsControllers.get);
+app.post(SCHOOLS_PATH, schoolsControllers.post);
 
 async function start() {
 	await initializeSkills();

@@ -33,4 +33,11 @@ async function getSchools(): Promise<School[] | null> {
 	return schoolRepository.find();
 }
 
-export { initializeSchools, getSchoolByName, getSchools };
+async function createSchool(schoolName: string): Promise<School | null> {
+	const schoolRepository = await getSchoolRepository();
+	const newSchool = new School(schoolName);
+	await schoolRepository.save(newSchool);
+	return newSchool;
+}
+
+export { initializeSchools, getSchoolByName, getSchools, createSchool };
