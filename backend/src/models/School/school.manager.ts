@@ -40,4 +40,14 @@ async function createSchool(schoolName: string): Promise<School | null> {
 	return newSchool;
 }
 
-export { initializeSchools, getSchoolByName, getSchools, createSchool };
+const deleteSchool = async (id: string) => {
+	const schoolRepository = await getSchoolRepository();
+	const existingSchool = await schoolRepository.findOneBy({ id });
+	console.error({ exisitingSchool: existingSchool });
+	if (!existingSchool) {
+		throw Error('No existing Wilder matching ID.');
+	}
+	return schoolRepository.remove(existingSchool);
+};
+
+export { initializeSchools, getSchoolByName, getSchools, createSchool, deleteSchool };

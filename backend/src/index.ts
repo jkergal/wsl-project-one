@@ -29,6 +29,7 @@ app.post(`${WILDERS_PATH}/:id/skills`, wildersControllers.addSkill);
 
 app.get(SCHOOLS_PATH, schoolsControllers.get);
 app.post(SCHOOLS_PATH, schoolsControllers.post);
+app.delete(`${SCHOOLS_PATH}/:id`, schoolsControllers.del);
 
 async function start() {
 	await initializeSkills();
