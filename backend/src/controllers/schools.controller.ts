@@ -1,9 +1,10 @@
 import { createSchool, deleteSchool, getSchools } from '../models/School/school.manager';
 import { Request, Response } from 'express';
 import { getErrorMessage } from '../utils';
+import School from '../models/School/school.entity';
 
 const get = async (req: Request, res: Response): Promise<void> => {
-	const schools = await getSchools();
+	const schools = await School.getSchools();
 	res.json(schools);
 };
 
