@@ -1,4 +1,6 @@
+import React from 'react';
 import blankProfilePicture from 'assets/images/blank-profile-picture.png';
+import { WilderType } from 'types';
 import Skill from 'components/Skill/Skill';
 import {
 	Card,
@@ -12,7 +14,9 @@ import {
 	CardTitle
 } from 'components/Widler/Wilder.styled';
 
-const Wilder = ({ firstName, lastName, skills, isTrainer, school }) => {
+type PropType = Omit<WilderType, 'id' | 'school'>;
+
+const Wilder = ({ firstName, lastName, skills, isTrainer }: PropType) => {
 	return (
 		<Card isTrainer={isTrainer}>
 			<CardWilderRoleWrapper>
@@ -27,7 +31,7 @@ const Wilder = ({ firstName, lastName, skills, isTrainer, school }) => {
 				<CardTitle>
 					{firstName} {lastName}
 				</CardTitle>
-					<h4>{school}</h4>
+				{/* <h4>{school}</h4> */}
 				<CardParagraph>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
 				</CardParagraph>

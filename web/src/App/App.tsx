@@ -1,7 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
+import React from 'react';
 
 import Home from 'pages/Home/Home';
-import { Container, Footer, Header, Layout, MainContainer, PageTitle, PageTitleLink } from 'App/App.styled';
+import {
+	Container,
+	Footer,
+	Header,
+	Layout,
+	MainContainer,
+	PageTitle,
+	PageTitleLink
+} from 'App/App.styled';
 import CreateWilder from 'pages/CreateWilder/CreateWilder';
 import { CREATE_WILDER_PATH, HOME_PATH } from 'paths';
 

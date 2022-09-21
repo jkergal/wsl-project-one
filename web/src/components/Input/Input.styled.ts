@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import { MAIN_THEME_COLOR } from 'styles/style.constants';
 
 export const InputStyled = styled.input`
@@ -21,4 +21,9 @@ export const InputStyled = styled.input`
 		box-shadow: 0px 0px 3px ${MAIN_THEME_COLOR};
 		border-color: ${MAIN_THEME_COLOR};
 	}
-`;
+` as StyledComponent<
+	'article',
+	any,
+	{ inputType: string; name: string; value: string; required: true },
+	never
+>;

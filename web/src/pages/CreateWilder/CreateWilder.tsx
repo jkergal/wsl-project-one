@@ -1,21 +1,23 @@
+import React, { ChangeEvent } from 'react';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Select from 'react-select';
+import Select, { StylesConfig } from 'react-select';
 
 import { SectionTitle } from '../../styles/base-styles';
 import { createWilder } from './rest';
 import Input from 'components/Input/Input';
 import { MAIN_THEME_COLOR } from 'styles/style.constants';
+import { getErrorMessage } from 'utils';
 
 const CreateWilder = () => {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [isTrainer, setIsTrainer] = useState(false);
 	const [schoolName, setSchool] = useState('');
-	const [skills, setSkills] = useState([]);
-	const [skillsInputValue, setSkillsInputValue] = useState(null);
-	const [schoolInputValue, setSchoolInputValue] = useState(null);
+	const [skills, setSkills] = useState<string[]>([]);
+	const [skillsInputValue, setSkillsInputValue] = useState<OptionType[] | unknown>(null);
+	const [schoolInputValue, setSchoolInputValue] = useState<OptionType | unknown>(null);
 
 	const submit = async () => {
 		try {
@@ -29,7 +31,7 @@ const CreateWilder = () => {
 			setSkillsInputValue(null);
 			setSchoolInputValue(null);
 		} catch (error) {
-			toast.error(error.message);
+			toast.error(getErrorMessage(error));
 		}
 	};
 
@@ -51,27 +53,32 @@ const CreateWilder = () => {
 		{ value: 'SQL', label: 'SQL' }
 	];
 
-	const customStyles = {
+	const customStyles: StylesConfig = {
 		control: (base, state) => ({
 			...base,
 			width: '268px',
-			borderColor: state.isFocused ? `${MAIN_THEME_COLOR}` : "hsl(0, 0%, 80%)",
+			borderColor: state.isFocused ? `${MAIN_THEME_COLOR}` : 'hsl(0, 0%, 80%)',
 			'&:hover': {
-				borderColor: state.isFocused ? `${MAIN_THEME_COLOR}` : "hsl(0, 0%, 80%)",
+				borderColor: state.isFocused ? `${MAIN_THEME_COLOR}` : 'hsl(0, 0%, 80%)'
 			},
 			boxShadow: state.isFocused ? `0px 0px 3px ${MAIN_THEME_COLOR}` : ''
 			// borderColor: ${MAIN_THEME_COLOR}
 		})
 	};
 
-	const handleChangeSkills = (data) => {
+	type OptionType = {
+		value: string;
+		label: string;
+	};
+
+	const handleChangeSkills = (data: OptionType[]) => {
 		setSkillsInputValue(data);
 
-		let skills = data.map((skill) => skill.value);
+		let skills: string[] = data.map((skill) => skill.value);
 		setSkills(skills);
 	};
 
-	const handleChangeSchool = (data) => {
+	const handleChangeSchool = (data: OptionType) => {
 		setSchoolInputValue(data);
 
 		let schoolName = data.value;
@@ -94,7 +101,7 @@ const CreateWilder = () => {
 						placeholder="Select..."
 						inputType="text"
 						value={firstName}
-						onChange={(event) => {
+						onChange={(event: ChangeEvent<HTMLInputElement>) => {
 							setFirstName(event.target.value);
 						}}
 					/>
@@ -108,7 +115,7 @@ const CreateWilder = () => {
 						placeholder="Wilder"
 						inputType="text"
 						value={lastName}
-						onChange={(event) => {
+						onChange={(event: ChangeEvent<HTMLInputElement>) => {
 							setLastName(event.target.value);
 						}}
 					/>
@@ -122,7 +129,7 @@ const CreateWilder = () => {
 						styles={customStyles}
 						options={schoolOptions}
 						value={schoolInputValue}
-						onChange={(data) => handleChangeSchool(data)}
+						onChange={(data) => handleChangeSchool(data as OptionType)}
 					/>
 				</label>
 				<br />
@@ -132,8 +139,8 @@ const CreateWilder = () => {
 						styles={customStyles}
 						options={skillsOptions}
 						value={skillsInputValue}
-						isMulti="true"
-						onChange={(data) => handleChangeSkills(data)}
+						isMulti={true}
+						onChange={(data) => handleChangeSkills(data as OptionType[])}
 					/>
 				</label>
 				<br />

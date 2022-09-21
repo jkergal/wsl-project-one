@@ -1,11 +1,11 @@
-import styled, { css } from 'styled-components';
+import styled, { css, StyledComponent } from 'styled-components';
 
 import { MAIN_THEME_COLOR } from 'styles/style.constants';
 import { baseTitleStyles, Paragraph } from 'styles/base-styles';
 
-export const Card = styled.article`
+export const Card: StyledComponent<'article', any, { isTrainer: boolean }, never> = styled.article`
 	width: 250px;
-	border: 1px solid ${(props) => (props.isTrainer ? `${MAIN_THEME_COLOR}` : '#c9c9c9')};
+	border: 1px solid ${(isTrainer) => (isTrainer ? `${MAIN_THEME_COLOR}` : '#c9c9c9')};
 	border-radius: 8px;
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
 	overflow: hidden;
