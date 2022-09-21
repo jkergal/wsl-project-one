@@ -50,7 +50,7 @@ async function createWilder(
 	const wilderRepository = await getWilderRepository();
 	const school = (await getSchoolByName(schoolName)) as School;
 	const getSkills = async () => {
-		let result = [];
+		let result: (Skill | null)[] = [];
 		for (const skillName of skillsNames) {
 			result.push(await getSkillByName(skillName));
 		}
