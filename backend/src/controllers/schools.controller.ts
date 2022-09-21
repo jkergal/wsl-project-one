@@ -1,4 +1,3 @@
-import { createSchool, deleteSchool, getSchools } from '../models/School/school.manager';
 import { Request, Response } from 'express';
 import { getErrorMessage } from '../utils';
 import School from '../models/School/school.entity';
@@ -10,14 +9,14 @@ const get = async (req: Request, res: Response): Promise<void> => {
 
 const post = async (req: Request, res: Response): Promise<void> => {
 	const schoolName: string = req.body.schoolName;
-	const newSchool = await createSchool(schoolName);
+	const newSchool = await School.createSchool(schoolName);
 	res.status(201).json(newSchool);
 };
 
 const del = async (req: Request, res: Response): Promise<void> => {
 	const { id } = req.params;
 	try {
-		await deleteSchool(id);
+		await School.deleteSchool(id);
 		res.status(200).json({ message: `School ${id} has been successfully removed.` });
 	} catch (error) {
 		res.status(404).json({ error: getErrorMessage(error) });
