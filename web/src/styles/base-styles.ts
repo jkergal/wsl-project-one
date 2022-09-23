@@ -48,7 +48,7 @@ export const SectionTitle = styled.h2`
 	font-weight: 600;
 	font-size: 28px;
 	color: ${WHITE_THEME_COLOR};
-	padding-bottom: 35px;
+	padding-bottom: 25px;
 `;
 
 export const Label = styled.label`
@@ -59,7 +59,7 @@ export const Label = styled.label`
 	margin: 0 0 10px 0;
 `;
 
-export const Form = styled.form`
+export const FormStyled = styled.form`
 	${baseFlexCenterStyle}
 	flex-direction: column;
 	margin: 0;

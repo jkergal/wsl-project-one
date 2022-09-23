@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Select, { StylesConfig } from 'react-select';
 
-import { baseFlexCenterStyle, Form, Label, SectionTitle } from '../../styles/base-styles';
+import { baseFlexCenterStyle, FormStyled, Label, SectionTitle } from '../../styles/base-styles';
 import { createWilder } from './rest';
 import Input from 'components/Input/Input';
 import {
@@ -105,7 +105,7 @@ const CreateWilder = () => {
 	return (
 		<>
 			<SectionTitle>Ajouter un nouveau Wilder</SectionTitle>
-			<Form
+			<FormStyled
 				onSubmit={async (event) => {
 					event.preventDefault();
 					await submit();
@@ -167,7 +167,7 @@ const CreateWilder = () => {
 				</Label>
 
 				<Button label="Valider"></Button>
-			</Form>
+			</FormStyled>
 			<ToastContainer />
 		</>
 	);
