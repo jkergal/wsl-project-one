@@ -1,14 +1,21 @@
 import styled, { css, StyledComponent } from 'styled-components';
 
-import { MAIN_THEME_COLOR } from 'styles/style.constants';
+import {
+	BLACK_THEME_COLOR,
+	GRAY_THEME_COLOR,
+	LIGHT_THEME_COLOR,
+	MAIN_THEME_COLOR,
+	WHITE_THEME_COLOR
+} from 'styles/style.constants';
 import { baseTitleStyles, Paragraph } from 'styles/base-styles';
 
 export const Card: StyledComponent<'article', any, { isTrainer: boolean }, never> = styled.article`
 	width: 250px;
-	border: 1px solid ${(isTrainer) => (isTrainer ? `${MAIN_THEME_COLOR}` : '#c9c9c9')};
+
 	border-radius: 8px;
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
 	overflow: hidden;
+	background-color: ${GRAY_THEME_COLOR};
 `;
 
 export const CardInfosContainer = styled.article`
@@ -43,6 +50,7 @@ export const CardTitle = styled.h3`
 	${baseTitleStyles}
 	color: ${MAIN_THEME_COLOR};
 	font-size: 20px;
+	padding-bottom: 10px;
 `;
 
 export const CardSecondaryTitle = styled.h4`
@@ -71,8 +79,9 @@ export const CardSkillList = styled.ul`
 		margin: 4px 0;
 		display: flex;
 		justify-content: space-around;
-		border: #f76c6c 1px solid;
+		background-color: ${LIGHT_THEME_COLOR};
 		border-radius: 4px;
 		padding: 2px;
+		color: ${BLACK_THEME_COLOR};
 	}
 `;

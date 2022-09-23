@@ -13,6 +13,7 @@ import {
 	CardSkillList,
 	CardTitle
 } from 'components/Widler/Wilder.styled';
+import { Paragraph } from 'styles/base-styles';
 
 type PropType = Omit<WilderType, 'id' | 'school'>;
 
@@ -33,7 +34,10 @@ const Wilder = ({ firstName, lastName, skills, isTrainer }: PropType) => {
 				</CardTitle>
 				{/* <h4>{school}</h4> */}
 				<CardParagraph>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+					<Paragraph>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+						tempor.
+					</Paragraph>
 				</CardParagraph>
 				<CardSecondaryTitle>Wild Skills</CardSecondaryTitle>
 				<CardSkillList>
