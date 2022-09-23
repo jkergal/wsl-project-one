@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 import {
 	APP_FUNCTIONAL_WIDTH,
 	GRAY_THEME_LINEAR_GRADIENT,
+	LIGHT_THEME_COLOR,
 	WHITE_THEME_COLOR
 } from 'styles/style.constants';
 
@@ -61,4 +63,13 @@ export const Form = styled.form`
 	${baseFlexCenterStyle}
 	flex-direction: column;
 	margin: 0;
+`;
+
+export const ReactRouterLink = styled(Link)`
+	color: ${WHITE_THEME_COLOR};
+	text-decoration: none;
+
+	&:hover {
+		color: ${LIGHT_THEME_COLOR};
+	}
 `;

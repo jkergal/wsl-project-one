@@ -18,6 +18,7 @@ import { ADMIN_PATH, CREATE_WILDER_PATH, HOME_PATH } from 'paths';
 import Admin from 'pages/Admin/Admin';
 import wcsLogo from 'assets/images/logo-wcs-alpha.png';
 import { Paragraph } from 'styles/base-styles';
+import Navbar from 'components/Navbar/Navbar';
 
 function App() {
 	return (
@@ -29,6 +30,7 @@ function App() {
 						<SiteTitle>Wilders Book</SiteTitle>
 					</SiteTitleWrapper>
 				</PageTitleLink>
+				<Navbar />
 			</Header>
 			<MainContainer>
 				<Routes>

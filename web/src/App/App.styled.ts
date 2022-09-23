@@ -35,6 +35,7 @@ export const Header = styled.header`
 	background: linear-gradient(120deg, rgba(247, 108, 108, 1) 0%, rgb(235, 170, 170) 100%);
 	color: #fff;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	line-height: 180%;
