@@ -4,11 +4,19 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Select, { StylesConfig } from 'react-select';
 
-import { SectionTitle } from '../../styles/base-styles';
+import { baseFlexCenterStyle, Form, Label, SectionTitle } from '../../styles/base-styles';
 import { createWilder } from './rest';
 import Input from 'components/Input/Input';
-import { MAIN_THEME_COLOR } from 'styles/style.constants';
+import {
+	BLACK_THEME_COLOR,
+	GRAY_THEME_COLOR,
+	GRAY_THEME_LINEAR_GRADIENT,
+	LIGHT_THEME_COLOR,
+	MAIN_THEME_COLOR,
+	WHITE_THEME_COLOR
+} from 'styles/style.constants';
 import { getErrorMessage } from 'utils';
+import Button from 'components/Button/Button';
 
 const CreateWilder = () => {
 	const [firstName, setFirstName] = useState('');
@@ -27,7 +35,7 @@ const CreateWilder = () => {
 			setFirstName('');
 			setLastName('');
 			setIsTrainer(false);
-			setSchool('');
+			// setSchool('');
 			setSkillsInputValue(null);
 			setSchoolInputValue(null);
 		} catch (error) {
@@ -62,7 +70,16 @@ const CreateWilder = () => {
 				borderColor: state.isFocused ? `${MAIN_THEME_COLOR}` : 'hsl(0, 0%, 80%)'
 			},
 			boxShadow: state.isFocused ? `0px 0px 3px ${MAIN_THEME_COLOR}` : ''
-			// borderColor: ${MAIN_THEME_COLOR}
+		}),
+		option: (styles) => {
+			return {
+				...styles,
+				color: BLACK_THEME_COLOR
+			};
+		},
+		multiValue: (base) => ({
+			...base,
+			backgroundColor: LIGHT_THEME_COLOR
 		})
 	};
 
@@ -88,41 +105,37 @@ const CreateWilder = () => {
 	return (
 		<>
 			<SectionTitle>Ajouter un nouveau Wilder</SectionTitle>
-			<form
+			<Form
 				onSubmit={async (event) => {
 					event.preventDefault();
 					await submit();
 				}}
 			>
-				<label>
+				<Label>
 					Prénom
 					<br />
 					<Input
-						placeholder="Select..."
+						placeholder="Jean"
 						inputType="text"
 						value={firstName}
 						onChange={(event: ChangeEvent<HTMLInputElement>) => {
 							setFirstName(event.target.value);
 						}}
 					/>
-				</label>
-				<br />
-				<br />
-				<label>
+				</Label>
+				<Label>
 					Nom
 					<br />
 					<Input
-						placeholder="Wilder"
+						placeholder="Dupont"
 						inputType="text"
 						value={lastName}
 						onChange={(event: ChangeEvent<HTMLInputElement>) => {
 							setLastName(event.target.value);
 						}}
 					/>
-				</label>
-				<br />
-				<br />
-				<label>
+				</Label>
+				<Label>
 					School
 					<br />
 					<Select
@@ -131,9 +144,8 @@ const CreateWilder = () => {
 						value={schoolInputValue}
 						onChange={(data) => handleChangeSchool(data as OptionType)}
 					/>
-				</label>
-				<br />
-				<label>
+				</Label>
+				<Label>
 					Skills
 					<Select
 						styles={customStyles}
@@ -142,9 +154,8 @@ const CreateWilder = () => {
 						isMulti={true}
 						onChange={(data) => handleChangeSkills(data as OptionType[])}
 					/>
-				</label>
-				<br />
-				<label>
+				</Label>
+				<Label>
 					<input
 						type="checkbox"
 						id="isTrainer"
@@ -152,12 +163,11 @@ const CreateWilder = () => {
 						onChange={(e) => setIsTrainer(e.target.checked)}
 						checked={isTrainer}
 					/>
-				</label>
-				Ce wilder est formateur
-				<br />
-				<br />
-				<button>Valider</button>
-			</form>
+					Ce wilder est formateur
+				</Label>
+
+				<Button label="Valider"></Button>
+			</Form>
 			<ToastContainer />
 		</>
 	);

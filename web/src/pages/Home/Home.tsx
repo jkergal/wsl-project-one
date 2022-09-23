@@ -7,7 +7,7 @@ import { CardRow } from 'pages/Home/Home.styled';
 import Wilder from 'components/Widler/Wilder';
 import { LoadingSpinner } from 'components/Loader/Loader.styled';
 import { SectionTitle } from 'styles/base-styles';
-import { CREATE_WILDER_PATH } from 'paths';
+import { ADMIN_PATH, CREATE_WILDER_PATH } from 'paths';
 import { fetchWilders } from './rest';
 import { WilderType } from 'types';
 import { getErrorMessage } from 'utils';
@@ -58,7 +58,8 @@ const Home = () => {
 	return (
 		<>
 			<SectionTitle>Wilders</SectionTitle>
-			<Link to={CREATE_WILDER_PATH}>Ajouter un nouveau Wilder</Link>
+			<Link to={CREATE_WILDER_PATH}>Ajouter un nouveau Wilder </Link>
+			<Link to={ADMIN_PATH}> Admin</Link>
 			<br />
 			<br />
 			{renderMainContent()}

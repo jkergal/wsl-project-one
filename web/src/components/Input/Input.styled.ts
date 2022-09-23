@@ -2,7 +2,7 @@ import styled, { StyledComponent } from 'styled-components';
 import { MAIN_THEME_COLOR } from 'styles/style.constants';
 
 export const InputStyled = styled.input`
-	all: unset;
+	/* all: unset; */
 	font-size: 16px;
 	padding: 4px 8px;
 	border: solid hsl(0, 0%, 80%) 2px;
@@ -10,6 +10,7 @@ export const InputStyled = styled.input`
 	border-width: 1px;
 	min-height: 25px;
 	width: 250px;
+	background-color: white;
 
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
 		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;

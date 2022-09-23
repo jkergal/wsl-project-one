@@ -1,8 +1,18 @@
 import styled, { css } from 'styled-components';
-import { APP_FUNCTIONAL_WIDTH } from 'styles/style.constants';
+import {
+	APP_FUNCTIONAL_WIDTH,
+	GRAY_THEME_LINEAR_GRADIENT,
+	WHITE_THEME_COLOR
+} from 'styles/style.constants';
+
+export const baseFlexCenterStyle = css`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
 
 export const baseTitleStyles = css`
-	margin: 0 0 0.35em;
+	margin: 0;
 `;
 
 export const baseContainerStyles = css`
@@ -13,11 +23,42 @@ export const baseContainerStyles = css`
 	padding: 24px;
 `;
 
+export const baseSectionStyles = css`
+	border-radius: 7px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: ${GRAY_THEME_LINEAR_GRADIENT};
+`;
+
 export const Paragraph = styled.p`
-	margin: 0 0 1.15em;
+	font-family: 'Baloo Tamma 2', cursive;
+	font-weight: 400;
+	font-size: 16px;
+	color: ${WHITE_THEME_COLOR};
+	margin: 0;
 `;
 
 export const SectionTitle = styled.h2`
 	${baseTitleStyles}
+	font-family: 'Baloo Tamma 2', cursive;
+	font-weight: 600;
 	font-size: 28px;
+	color: ${WHITE_THEME_COLOR};
+	padding-bottom: 35px;
+`;
+
+export const Label = styled.label`
+	font-family: 'Baloo Tamma 2', cursive;
+	font-weight: 400;
+	font-size: 18px;
+	color: ${WHITE_THEME_COLOR};
+	margin: 0 0 10px 0;
+`;
+
+export const Form = styled.form`
+	${baseFlexCenterStyle}
+	flex-direction: column;
+	margin: 0;
 `;

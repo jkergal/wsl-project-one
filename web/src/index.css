@@ -10,4 +10,17 @@ body {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+
+  background-color: #3D3535;
 }
+
+
+/* FONT - Baloo Tamma 2 */
+/* 
+Regular: 400
+Medium: 500
+SemiBold: 600
+Bold: 700
+Extrabold : 900
+*/
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600;700;800&display=swap');

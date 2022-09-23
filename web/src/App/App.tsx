@@ -3,37 +3,42 @@ import React from 'react';
 
 import Home from 'pages/Home/Home';
 import {
-	Container,
+	SiteTitleWrapper,
 	Footer,
 	Header,
 	Layout,
 	MainContainer,
-	PageTitle,
-	PageTitleLink
+	Container,
+	SiteTitle,
+	PageTitleLink,
+	WcsLogo
 } from 'App/App.styled';
 import CreateWilder from 'pages/CreateWilder/CreateWilder';
-import { CREATE_WILDER_PATH, HOME_PATH } from 'paths';
+import { ADMIN_PATH, CREATE_WILDER_PATH, HOME_PATH } from 'paths';
+import Admin from 'pages/Admin/Admin';
+import wcsLogo from 'assets/images/logo-wcs-alpha.png';
+import { Paragraph } from 'styles/base-styles';
 
 function App() {
 	return (
 		<Layout>
 			<Header>
-				<Container>
-					<PageTitle>
-						<PageTitleLink to={HOME_PATH}>Wilders Book</PageTitleLink>
-					</PageTitle>
-				</Container>
+				<PageTitleLink to={HOME_PATH}>
+					<SiteTitleWrapper>
+						<WcsLogo src={wcsLogo} alt="Wild Code School logo" />
+						<SiteTitle>Wilders Book</SiteTitle>
+					</SiteTitleWrapper>
+				</PageTitleLink>
 			</Header>
 			<MainContainer>
 				<Routes>
 					<Route path={HOME_PATH} element={<Home />} />
 					<Route path={CREATE_WILDER_PATH} element={<CreateWilder />} />
+					<Route path={ADMIN_PATH} element={<Admin />} />
 				</Routes>
 			</MainContainer>
 			<Footer>
-				<Container>
-					<p>&copy; 2022 Wild Code School</p>
-				</Container>
+				<Paragraph>&copy; 2022 Wild Code School</Paragraph>
 			</Footer>
 		</Layout>
 	);
