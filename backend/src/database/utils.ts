@@ -1,8 +1,10 @@
 import { DataSource, EntityTarget } from 'typeorm';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const dataSource = new DataSource({
 	type: 'sqlite',
-	database: 'wildersdb.sqlite',
+	database: process.env.SQLITE_DB_PATH as string,
 	synchronize: true,
 	entities: [__dirname + '/../models/**/*.entity.js'],
 	logging: ['query', 'error']
