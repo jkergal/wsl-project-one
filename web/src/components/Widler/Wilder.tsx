@@ -18,6 +18,7 @@ import { Paragraph } from 'styles/base-styles';
 type PropType = Omit<WilderType, 'id' | 'school'>;
 
 const Wilder = ({ firstName, lastName, skills, isTrainer }: PropType) => {
+	console.log(isTrainer);
 	return (
 		<Card isTrainer={isTrainer}>
 			<CardWilderRoleWrapper>

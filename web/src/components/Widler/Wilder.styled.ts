@@ -4,14 +4,14 @@ import {
 	BLACK_THEME_COLOR,
 	GRAY_THEME_COLOR,
 	LIGHT_THEME_COLOR,
-	MAIN_THEME_COLOR,
-	WHITE_THEME_COLOR
+	MAIN_THEME_COLOR
 } from 'styles/style.constants';
 import { baseTitleStyles, Paragraph } from 'styles/base-styles';
 
-export const Card: StyledComponent<'article', any, { isTrainer: boolean }, never> = styled.article`
+export const Card = styled.article<{ isTrainer: boolean }>`
 	width: 250px;
-
+	border: 1px solid
+		${(props) => (props.isTrainer ? `${MAIN_THEME_COLOR}` : `${GRAY_THEME_COLOR}`)};
 	border-radius: 8px;
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
 	overflow: hidden;

@@ -4,17 +4,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Select, { StylesConfig } from 'react-select';
 
-import { baseFlexCenterStyle, FormStyled, Label, SectionTitle } from '../../styles/base-styles';
+import { FormStyled, Label, SectionTitle } from '../../styles/base-styles';
 import { createWilder } from './rest';
 import Input from 'components/Input/Input';
-import {
-	BLACK_THEME_COLOR,
-	GRAY_THEME_COLOR,
-	GRAY_THEME_LINEAR_GRADIENT,
-	LIGHT_THEME_COLOR,
-	MAIN_THEME_COLOR,
-	WHITE_THEME_COLOR
-} from 'styles/style.constants';
+import { BLACK_THEME_COLOR, LIGHT_THEME_COLOR, MAIN_THEME_COLOR } from 'styles/style.constants';
 import { getErrorMessage } from 'utils';
 import Button from 'components/Button/Button';
 

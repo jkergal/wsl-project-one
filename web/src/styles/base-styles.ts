@@ -34,6 +34,17 @@ export const baseSectionStyles = css`
 	background: ${GRAY_THEME_LINEAR_GRADIENT};
 `;
 
+export const ReactRouterLink = styled(Link)`
+	color: ${WHITE_THEME_COLOR};
+	text-decoration: none;
+
+	&:hover {
+		color: ${LIGHT_THEME_COLOR};
+	}
+`;
+
+// FONT-STYLES
+
 export const Paragraph = styled.p`
 	font-family: 'Baloo Tamma 2', cursive;
 	font-weight: 400;
@@ -63,13 +74,4 @@ export const FormStyled = styled.form`
 	${baseFlexCenterStyle}
 	flex-direction: column;
 	margin: 0;
-`;
-
-export const ReactRouterLink = styled(Link)`
-	color: ${WHITE_THEME_COLOR};
-	text-decoration: none;
-
-	&:hover {
-		color: ${LIGHT_THEME_COLOR};
-	}
 `;

@@ -52,14 +52,7 @@ const Home = () => {
 		);
 	};
 
-	return (
-		<>
-			<SectionTitle>Wilders</SectionTitle>
-			<br />
-			<br />
-			{renderMainContent()}
-		</>
-	);
+	return <>{renderMainContent()}</>;
 };
 
 export default Home;

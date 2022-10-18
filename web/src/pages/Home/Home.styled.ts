@@ -11,4 +11,5 @@ export const CardRow = styled.section`
 	flex-wrap: wrap;
 	gap: 20px;
 	justify-content: center;
+	margin-top: 45px;
 `;
