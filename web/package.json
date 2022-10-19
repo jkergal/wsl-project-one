@@ -29,7 +29,8 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"codegen": "graphql-codegen --config codegen.ts"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -48,5 +49,9 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"devDependencies": {
+		"@graphql-codegen/cli": "2.13.7",
+		"@graphql-codegen/client-preset": "1.0.7"
 	}
 }

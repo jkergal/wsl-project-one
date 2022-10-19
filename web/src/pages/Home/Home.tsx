@@ -2,7 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 import { LoadingSpinner } from 'components/Loader/Loader.styled';
 import Wilder from 'components/Widler/Wilder';
 import { CardRow } from 'pages/Home/Home.styled';
-import { WilderType } from 'types';
+import { GetWildersQuery } from '../../gql/graphql';
 
 const GET_WILDERS = gql`
 	query GetWilders {
@@ -10,17 +10,21 @@ const GET_WILDERS = gql`
 			id
 			firstName
 			lastName
+			isTrainer
 			skills {
 				id
 				skillName
+			}
+			school {
+				id
+				schoolName
 			}
 		}
 	}
 `;
 
 const Home = () => {
-	const { data, loading, error } = useQuery(GET_WILDERS);
-
+	const { data, loading, error } = useQuery<GetWildersQuery>(GET_WILDERS);
 	const renderMainContent = () => {
 		if (loading) {
 			return <LoadingSpinner />;
@@ -28,12 +32,12 @@ const Home = () => {
 		if (error) {
 			return error.message;
 		}
-		if (!data.wilders?.length) {
+		if (!data?.wilders?.length) {
 			return 'Pas de Wilder... Rejoint-nous! 😎';
 		}
 		return (
 			<CardRow>
-				{data.wilders.map((wilder: WilderType) => (
+				{data.wilders.map((wilder) => (
 					<Wilder
 						key={wilder.id}
 						firstName={wilder.firstName}
