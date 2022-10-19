@@ -4,44 +4,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Select, { StylesConfig } from 'react-select';
 import { gql, useMutation } from '@apollo/client';
-import { CreateWilderMutation, CreateWilderMutationVariables } from '../../gql/graphql';
 
 import { FormStyled, Label, SectionTitle } from '../../styles/base-styles';
 import Input from 'components/Input/Input';
 import { BLACK_THEME_COLOR, LIGHT_THEME_COLOR, MAIN_THEME_COLOR } from 'styles/style.constants';
 import { getErrorMessage } from 'utils';
 import Button from 'components/Button/Button';
-
-const CREATE_WILDER = gql`
-	mutation CreateWilder(
-		$firstName: String!
-		$lastName: String!
-		$isTrainer: Boolean!
-		$schoolName: String!
-		$skillsName: [String!]!
-	) {
-		createWilder(
-			firstName: $firstName
-			lastName: $lastName
-			isTrainer: $isTrainer
-			schoolName: $schoolName
-			skillsName: $skillsName
-		) {
-			firstName
-			lastName
-			id
-			isTrainer
-			school {
-				id
-				schoolName
-			}
-			skills {
-				id
-				skillName
-			}
-		}
-	}
-`;
+import { CREATE_WILDER } from 'api/CreateWilder.gql';
+import { CreateWilderMutation, CreateWilderMutationVariables } from 'graphql/graphql';
 
 const CreateWilder = () => {
 	const [firstName, setFirstName] = useState('');

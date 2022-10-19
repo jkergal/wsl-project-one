@@ -1,27 +1,9 @@
 import { gql, useQuery } from '@apollo/client';
 import { LoadingSpinner } from 'components/Loader/Loader.styled';
 import Wilder from 'components/Widler/Wilder';
+import { GetWildersQuery } from 'graphql/graphql';
 import { CardRow } from 'pages/Home/Home.styled';
-import { GetWildersQuery } from '../../gql/graphql';
-
-const GET_WILDERS = gql`
-	query GetWilders {
-		wilders {
-			id
-			firstName
-			lastName
-			isTrainer
-			skills {
-				id
-				skillName
-			}
-			school {
-				id
-				schoolName
-			}
-		}
-	}
-`;
+import { GET_WILDERS } from '../../api/GetWilders.gql';
 
 const Home = () => {
 	const { data, loading, error } = useQuery<GetWildersQuery>(GET_WILDERS, {
