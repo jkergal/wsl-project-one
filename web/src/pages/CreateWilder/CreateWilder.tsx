@@ -1,17 +1,16 @@
-import React, { ChangeEvent } from 'react';
-import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useMutation } from '@apollo/client';
+import { ChangeEvent, useState } from 'react';
 import Select, { StylesConfig } from 'react-select';
-import { gql, useMutation } from '@apollo/client';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import { FormStyled, Label, SectionTitle } from '../../styles/base-styles';
+import { CREATE_WILDER } from 'api/CreateWilder.gql';
+import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
+import { CreateWilderMutation, CreateWilderMutationVariables } from 'graphql/graphql';
 import { BLACK_THEME_COLOR, LIGHT_THEME_COLOR, MAIN_THEME_COLOR } from 'styles/style.constants';
 import { getErrorMessage } from 'utils';
-import Button from 'components/Button/Button';
-import { CREATE_WILDER } from 'api/CreateWilder.gql';
-import { CreateWilderMutation, CreateWilderMutationVariables } from 'graphql/graphql';
+import { FormStyled, Label, SectionTitle } from '../../styles/base-styles';
 
 const CreateWilder = () => {
 	const [firstName, setFirstName] = useState('');

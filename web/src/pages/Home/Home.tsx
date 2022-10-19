@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { LoadingSpinner } from 'components/Loader/Loader.styled';
 import Wilder from 'components/Widler/Wilder';
 import { GetWildersQuery } from 'graphql/graphql';
