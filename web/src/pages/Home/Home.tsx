@@ -24,7 +24,10 @@ const GET_WILDERS = gql`
 `;
 
 const Home = () => {
-	const { data, loading, error } = useQuery<GetWildersQuery>(GET_WILDERS);
+	const { data, loading, error } = useQuery<GetWildersQuery>(GET_WILDERS, {
+		fetchPolicy: 'cache-and-network'
+	});
+
 	const renderMainContent = () => {
 		if (loading) {
 			return <LoadingSpinner />;
@@ -35,6 +38,7 @@ const Home = () => {
 		if (!data?.wilders?.length) {
 			return 'Pas de Wilder... Rejoint-nous! 😎';
 		}
+
 		return (
 			<CardRow>
 				{data.wilders.map((wilder) => (
