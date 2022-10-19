@@ -1,45 +1,39 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-
-import { CardRow } from 'pages/Home/Home.styled';
-import Wilder from 'components/Widler/Wilder';
+import { gql, useQuery } from '@apollo/client';
 import { LoadingSpinner } from 'components/Loader/Loader.styled';
-import { SectionTitle } from 'styles/base-styles';
-import { fetchWilders } from './rest';
+import Wilder from 'components/Widler/Wilder';
+import { CardRow } from 'pages/Home/Home.styled';
 import { WilderType } from 'types';
-import { getErrorMessage } from 'utils';
+
+const GET_WILDERS = gql`
+	query GetWilders {
+		wilders {
+			id
+			firstName
+			lastName
+			skills {
+				id
+				skillName
+			}
+		}
+	}
+`;
 
 const Home = () => {
-	const [wilders, setWilders] = useState<null | WilderType[]>(null);
-	const [isLoading, setIsLoading] = useState(true);
-	const [errorMessage, setErrorMessage] = useState('');
-
-	useEffect(() => {
-		(async () => {
-			try {
-				const fetchedWilders = await fetchWilders();
-				setWilders(fetchedWilders);
-			} catch (error) {
-				setErrorMessage(getErrorMessage(error));
-			} finally {
-				setIsLoading(false);
-			}
-		})();
-	}, []);
+	const { data, loading, error } = useQuery(GET_WILDERS);
 
 	const renderMainContent = () => {
-		if (isLoading) {
+		if (loading) {
 			return <LoadingSpinner />;
 		}
-		if (errorMessage) {
-			return errorMessage;
+		if (error) {
+			return error.message;
 		}
-		if (!wilders?.length) {
+		if (!data.wilders?.length) {
 			return 'Pas de Wilder... Rejoint-nous! 😎';
 		}
 		return (
 			<CardRow>
-				{wilders.map((wilder) => (
+				{data.wilders.map((wilder: WilderType) => (
 					<Wilder
 						key={wilder.id}
 						firstName={wilder.firstName}
