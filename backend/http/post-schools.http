@@ -1,6 +1,0 @@
-POST http://localhost:4000/schools
-Content-Type: application/json
-
-{
-  "schoolName": "Marseille"
-}
