@@ -9,7 +9,7 @@ export default class SkillRepository extends Skill {
 	}
 
 	static async clearRepository(): Promise<void> {
-		this.repository.clear();
+		await this.repository.delete({});
 	}
 
 	static async initializeSkills() {

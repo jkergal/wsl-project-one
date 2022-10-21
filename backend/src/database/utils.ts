@@ -1,10 +1,10 @@
 import { DataSource, EntityTarget } from 'typeorm';
-import * as dotenv from 'dotenv';
-dotenv.config();
+// import * as dotenv from 'dotenv';
+// dotenv.config();
 
 const dataSource = new DataSource({
-	type: 'sqlite',
-	database: process.env.SQLITE_DB_PATH as string,
+	type: 'postgres',
+	url: process.env.DATABASE_URL,
 	synchronize: true,
 	entities: [__dirname + '/../models/**/*.entity.js'],
 	logging: ['query', 'error']

@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgres://postgres:password@database:5432/postgres
+    ports:
+      - 4000:4000
+    volumes:
+      - ./backend/src:/app/src
+    depends_on:
+      - database
+
+  webapp:
+    build: ./web
+    ports:
+      - 3000:3000
+    volumes:
+      - ./web/src:/app/src
+    depends_on:
+      - backend
+
+  database:
+    image: postgres:14.5-alpine
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - database-content:/var/lib/postgresql/data
+    ports:
+      - 5435
+
+volumes:
+  database-content:

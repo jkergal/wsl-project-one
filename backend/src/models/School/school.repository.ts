@@ -11,12 +11,12 @@ export default class SchoolRepository extends School {
 	}
 
 	static async clearRepository(): Promise<void> {
-		this.repository.clear();
+		this.repository.delete({});
 	}
 
 	static async initializeSchools(): Promise<void> {
 		await WilderRepository.clearRepository();
-		await this.repository.clear();
+		await this.repository.delete({});
 		await this.repository.save({
 			schoolName: 'Lyon'
 		});

@@ -13,7 +13,7 @@ export default class WilderRepository extends Wilder {
 	}
 
 	static async clearRepository(): Promise<void> {
-		this.repository.clear();
+		this.repository.delete({});
 	}
 
 	static async initializeWilders(): Promise<void> {
