@@ -28,7 +28,7 @@ services:
     volumes:
       - database-content:/var/lib/postgresql/data
     ports:
-      - 5435
+      - 5435:5432
 
 volumes:
   database-content:
